@@ -1,0 +1,16 @@
+create database diario;
+use diario;
+create table Login (
+	id_login int auto_increment primary key,
+	userName varchar(255) not null,
+	senha varchar(255) not null
+    );
+create table Relatos (
+	id_relatos int auto_increment,
+    titulo varchar(255) not null,
+    dt_inclusao datetime not null,
+    conteudo varchar(1000) not null,
+    id_login int not null,
+    primary key (id_relatos),
+    foreign key (id_login) references Login(id_login)
+);
