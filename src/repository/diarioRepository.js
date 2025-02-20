@@ -28,7 +28,7 @@ export async function buscarId(id){
 
 export async function lerNotas(){
     const comando = `
-        select * from Relatos
+        select * from Relatos order by dt_inclusao desc
     `
 
     let [registros] = await con.query(comando);
