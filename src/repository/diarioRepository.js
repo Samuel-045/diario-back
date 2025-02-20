@@ -1,9 +1,12 @@
 import con from "./connection.js";
 
 export async function logar(pessoa) {
-    const comando = `select userName , senha from login where userName = ? and senha = ?;`
+    const comando = `select * from login where userName = ? and senha = ?;`
 
     let [info] = await con.query(comando, [pessoa.nome , pessoa.senha])
+    if(info[0] == undefined){
+        info = false
+    }
     return info
 }
 
