@@ -6,6 +6,8 @@ export async function logar(pessoa) {
     let [info] = await con.query(comando, [pessoa.nome , pessoa.senha])
     if(info[0] == undefined){
         info = false
+    }else{
+        info = true
     }
     return info
 }
