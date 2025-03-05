@@ -22,9 +22,11 @@ endpoints.post('/', async (req, resp) => {
     }
 })
 
-endpoints.get("/notas", async(req,resp) =>{
+endpoints.get("/notas/:id", async(req,resp) =>{
     try{
-        let registros = await consultar()
+        let id = req.url
+        let idTratado = (id.split('/')[2])
+        let registros = await consultar(idTratado)
         resp.send(registros)
 
     }
@@ -35,10 +37,10 @@ endpoints.get("/notas", async(req,resp) =>{
     }
 })
 
-endpoints.get('/notas/:id', async (req,resp) =>{
+endpoints.get('/notas/ler/:id', async (req,resp) =>{
     try{
         let id = req.url
-        let idTratado = (id.split('/')[2])
+        let idTratado = (id.split('/')[3])
 
         let dados = await buscaIdService(idTratado)
         resp.send(dados)
