@@ -6,5 +6,4 @@ export default async function criarNotaService(nota) {
 
     let retorno = await criarNota(nota)
     return retorno
-    
 }

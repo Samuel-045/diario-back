@@ -21,7 +21,6 @@ export async function criarNota(nota) {
     let [info] = await con.query(comando, [nota.titulo , nota.conteudo, nota.data, nota.id])
 
     return info.insertId
-    
 }
 
 export async function buscarId(id){
