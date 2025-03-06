@@ -57,9 +57,9 @@ endpoints.post('/notas/criar', async (req, resp) =>{
         let nota = req.body 
         let id = await criarNota(nota)
 
-        // resp.send({
-        //     novoId: id
-        // })
+        resp.send({
+            novoId: id
+        })
     }
     catch(error){
         resp.status(400).send({
