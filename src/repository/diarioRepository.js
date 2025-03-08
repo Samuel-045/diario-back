@@ -1,7 +1,7 @@
 import con from "./connection.js";
 
 export async function criarCadastro(pessoa){
-    const comando = `insert into usuario(userEmail, userNamen,senha) values (?,?,?)`
+    const comando = `insert into usuario(userEmail, userName,senha) values (?,?,?)`
 
     let info = await con.query(comando,[pessoa.email, pessoa.nome, pessoa.senha])
     return info

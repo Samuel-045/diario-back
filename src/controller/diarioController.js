@@ -1,5 +1,6 @@
 import consultar from "../service/consultarNotasService.js";
 import loginServ from "../service/loginService.js";
+import cadasServ from "../service/criarUsuarioService.js"
 import criarNota from "../service/criarNotaService.js";
 import buscaIdService from "../service/buscaIdService.js";
 import atualizar from "../service/atualizarService.js";
