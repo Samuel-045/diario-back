@@ -22,6 +22,20 @@ endpoints.post('/', async (req, resp) => {
     }
 })
 
+endpoints.post('/cadastro', async (req, resp) => {
+    try{
+        let pessoa = req.body;
+
+        let cadastro = await cadasServ(pessoa)
+        resp.send(cadastro)
+    }
+    catch(error){
+        resp.status(400).send({
+            erro: error.message
+        })
+    }
+})
+
 endpoints.get("/notas/:id", async(req,resp) =>{
     try{
         let id = req.url

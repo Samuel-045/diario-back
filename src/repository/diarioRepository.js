@@ -1,7 +1,14 @@
 import con from "./connection.js";
 
+export async function criarCadastro(pessoa){
+    const comando = `insert into usuario(userEmail, userNamen,senha) values (?,?,?)`
+
+    let info = await con.query(comando,[pessoa.email, pessoa.nome, pessoa.senha])
+    return info
+}
+
 export async function logar(pessoa) {
-    const comando = `select id_login from login where userName = ? and senha = ?;`
+    const comando = `select id_login from usuario where userName = ? and senha = ?;`
 
     let [info] = await con.query(comando, [pessoa.nome , pessoa.senha])
     if(info[0] == undefined){
