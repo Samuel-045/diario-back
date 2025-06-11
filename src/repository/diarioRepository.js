@@ -1,14 +1,14 @@
 import con from "./connection.js";
 
 export async function criarCadastro(pessoa){
-    const comando = `insert into usuario(userEmail, userName,senha) values (?,?,?)`
+    const comando = `insert into usuario(userEmail, userName, userPassword) values (?,?,?)`
 
     let info = await con.query(comando,[pessoa.email, pessoa.nome, pessoa.senha])
     return info
 }
 
 export async function logar(pessoa) {
-    const comando = `select id_login from usuario where userName = ? and senha = ?;`
+    const comando = `select id_login from usuario where userName = ? and userPassword = ?;`
 
     let [info] = await con.query(comando, [pessoa.nome , pessoa.senha])
     if(info[0] == undefined){
@@ -39,7 +39,7 @@ export async function buscarId(id){
 
 export async function lerNotas(id){
     const comando = `
-        select * from Relatos where id_login = ? order by dt_inclusao desc
+        select * from Relato where id_login = ? order by dt_inclusao desc
     `
 
     let [registros] = await con.query(comando, [id]);

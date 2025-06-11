@@ -6,8 +6,5 @@ export default async function criarUsuarioService(pessoa){
 
     let retorno = await criarCadastro(pessoa)
 
-    let id = await logar(pessoa)
-
-
-    return id
+    return retorno
 }
