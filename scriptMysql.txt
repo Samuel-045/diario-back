@@ -1,16 +1,17 @@
 create database diario;
 use diario;
-create table Login (
+create table usuario(
 	id_login int auto_increment primary key,
-	userName varchar(255) not null,
-	senha varchar(255) not null
+	userEmail varchar(180) not null,
+	userName varchar(100) not null,
+	userPassword varchar(120) not null
     );
-create table Relatos (
+create table Relato(
 	id_relatos int auto_increment,
-    titulo varchar(255) not null,
-    dt_inclusao datetime not null,
-    conteudo varchar(1000) not null,
-    id_login int not null,
-    primary key (id_relatos),
-    foreign key (id_login) references Login(id_login)
+	titulo varchar(255) not null,
+    	dt_inclusao datetime not null,
+    	conteudo varchar(1000) not null,
+    	id_login int not null,
+    	primary key (id_relatos),
+    	foreign key (id_login) references usuario(id_login)
 );
