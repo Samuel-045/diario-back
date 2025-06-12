@@ -23,7 +23,7 @@ export async function logar(pessoa) {
 }
 
 export async function criarNota(nota) {
-    const comando = `insert into Relatos(titulo,conteudo,dt_inclusao,id_login) values (?, ?, ?, ?);`
+    const comando = `insert into Relato(titulo,conteudo,dt_inclusao,id_login) values (?, ?, ?, ?);`
 
     let [info] = await con.query(comando, [nota.titulo , nota.conteudo, nota.data, nota.id])
 
@@ -31,7 +31,7 @@ export async function criarNota(nota) {
 }
 
 export async function buscarId(id){
-    const comando = `select * from Relatos where id_relatos = ?`
+    const comando = `select * from Relato where id_relatos = ?`
 
     let [info] = await con.query(comando, [id])
     return info
@@ -47,14 +47,14 @@ export async function lerNotas(id){
 }
 
 export async function excluir(id) {
-    const comando = `delete from Relatos where id_relatos = ?`
+    const comando = `delete from Relato where id_relatos = ?`
 
     let [info] = await con.query(comando,[id])
     return info;
 }
 
 export async function atualizar(id,dados) {
-    const comando = `update Relatos set titulo = ? , conteudo = ? , dt_inclusao = ? where id_relatos = ?`
+    const comando = `update Relato set titulo = ? , conteudo = ? , dt_inclusao = ? where id_relatos = ?`
 
     let [info] = await con.query(comando,[dados.titulo , dados.conteudo, dados.data, id])
     return info
